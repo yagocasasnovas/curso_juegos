@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Canvas tutorial</title>
+    <script type="text/javascript">
+    
+      // tenemos 4 x 4 = 16 casillas
+      // cada casilla tendrá un valor 0 si está vacía o el número correspondiente
+      // vamos a usar una matriz para almacenar los valores
+      //905210704030030274151211065211146000050000
+     //905210704030030272528931065211144000050000     
+      var matrix_value = new Array(4);
+      matrix_value[0] = new Array(4);
+      matrix_value[1] = new Array(4);
+      matrix_value[2] = new Array(4);
+      matrix_value[3] = new Array(4);
+      
+      //generamos los dos primeros valores de manera aleatoria. La probabilidad del 2 es 90% y del 4 10%
+
+		function generate_random() {
+			
+		 var return_values = new Array(4);  
+      
+      var value1 = 0;
+      
+      var a = Math.random();
+      
+      if (a < 0.9) { value1 = 2;
+      	
+      }else {
+      	value1 = 4;
+      }
+      
+          
+      var value2 = 0;
+      
+      var b = Math.random();
+      if (b < 0.9) { value2 = 2;
+      	
+      }else {
+      	value2 = 4;
+      }
+      
+      
+      var pos1 = Math.floor(Math.random()*16);
+      var pos2 = Math.floor(Math.random()*16);
+            
+       return_values[0] = value1;
+       return_values[1] = pos1;
+       return_values[2] = value2;
+       return_values[3] = pos2;     
+       
+       return return_values;
+		 }   
+    
+      function draw() {
+        var canvas = document.getElementById('tutorial');
+        if (canvas.getContext) {
+          var ctx = canvas.getContext('2d');
+        }
+      }
+      document.addEventListener('keydown', logKey);
+      
+		function logKey(e) {
+  			alert(generate_random())
+		}
+      
+      
+    </script>
+    <style type="text/css">
+      canvas { border: 1px solid black; }
+    </style>
+  </head>
+  <body onload="draw();">
+    <canvas id="tutorial" width="400" height="400"></canvas>
+  </body>
+</html>
